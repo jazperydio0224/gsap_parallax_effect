@@ -1,0 +1,107 @@
+:root {
+    --pr-color: #bceafb;
+    --second-color: #091a20;
+    --fz-title: 0.9rem;
+
+    --grid-item-translate: 0px;
+    --grid-columns: 3;
+    --grid-width: 100%;
+    --grid-max-width: 1260px;
+    --grid-item-ratio: 1;
+    --grid-item-radius: 20px;
+    --grid-grap: 1vw;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    margin: 0;
+    padding: 0;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
+html {
+    font-size: 6.25vmax;
+}
+
+body {
+    margin: 0;
+    background-color: var(--second-color);
+    overflow-x: hidden;
+}
+
+.title {
+    position: fixed;
+    width: 100%;
+    padding: 23px 50px;
+    margin: 0;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--pr-color);
+    text-align: center;
+    font-size: var(--fz-title);
+    text-transform: uppercase;
+    mix-blend-mode: difference;
+    z-index: 2;
+}
+
+.stroke {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--pr-color);
+}
+
+/* On-Scroll Images Animation */
+.section {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+
+.columns {
+    position: relative;
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    gap: var(--grid-grap);
+    width: var(--grid-width);
+    max-width: var(--grid-max-width);
+    padding: 3.7em 0;
+}
+
+.column {
+    position: relative;
+    display: grid;
+    gap: var(--grid-grap);
+    grid-template-columns: 100%;
+    width: 100%;
+    will-change: transform;
+}
+
+.column__item {
+    position: relative;
+    margin: 0;
+    z-index: 1;
+}
+
+.column__item-imgwrap {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: var(--grid-item-ratio);
+    overflow: hidden;
+    border-radius: var(--grid-item-radius);
+}
+
+.column__item-img {
+    position: absolute;
+    width: calc(100% + var(--grid-item-translate) * 2);
+    height: calc(100% + var(--grid-item-translate) * 2);
+    top: calc(-1 * var(--grid-item-translate));
+    left: calc(-1 * var(--grid-item-translate));
+    background-size: cover;
+    background-position: 50% 20%;
+    backface-visibility: hidden;
+}
